@@ -1,0 +1,136 @@
+/* General */
+* {
+    font-family: 'Roboto';
+}
+
+body {
+    min-height: 100vh;
+    padding-bottom: 6.25rem;
+    position: relative;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 0.063rem solid #ccc;
+}
+
+.row {
+    margin: 0;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.btn-primary {
+    color: #000;
+    background-color: #ff5c5c;
+    border: 0.063rem solid #c73d3d;
+}
+
+.btn-primary:hover {
+    background-color: #c73d3d;
+    border-color: #c73d3d;
+}
+
+/* navbar */
+#navbar img {
+    width: 2.5rem;
+}
+
+#navbar {
+    padding: 5px 0;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+#navbar a {
+    font-size: 0.875rem;
+    color: #757575;
+}
+
+#navbar a:hover {
+    color: #ff5c5c;
+}
+
+/* Search Container */
+
+#search-container {
+    height: 25rem;
+    padding: 3.125px;
+    text-align: center;
+    background-image: url("../img/banner.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+#search-container h1 {
+    color: #ff5c5c;
+    margin-bottom: 1.875rem;
+    font-weight: 900;
+}
+
+#search-container form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+/* Events List */
+#events-container {
+    padding: 3.125rem;
+}
+
+#events-container h2 {
+    margin-bottom: 0.625rem;
+}
+
+#events-container .subtitle {
+    color: #757575;
+    margin-bottom: 1.875rem;
+}
+
+#events-container .card {
+    max-width: 25%;
+    padding: 0;
+    margin: 0.313rem;
+    border-radius: 0.625rem;
+}
+
+#events-container img {
+    max-height: 12.5rem;
+    border-top-left-radius: 0.625rem;
+    border-top-right-radius: 0.625rem;
+}
+
+.card .card-date {
+    color: #ccc;
+    font-size: 0.75rem;
+    margin-bottom: 0.45rem;
+}
+
+.card .card-title {
+    color: #212121;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1.875rem;
+}
+
+.card-participants {
+    color: #757575;
+    font-size: 0.875rem;
+}
+
+/* footer */
+
+footer {
+    color: #fff;
+    background-color: #353e48;
+    width: 100%;
+    padding: 1.875rem;
+    bottom: 0;
+    position: absolute;
+}
+
+footer p {
+    margin-bottom: 0;
+}
