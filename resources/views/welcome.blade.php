@@ -8,7 +8,10 @@
 	<div id="search-container" class="col-md-12">
 		<h1>Busque um evento</h1>
 		<form action="">
-			<input type="text" id="search" name="search" placeholder="Buscar" class="form-control" >
+			<div id="input-container">
+				<ion-icon name="search-outline" class="search-icon"></ion-icon>
+				<input type="text" id="search" name="search" placeholder="Buscar" class="form-control" >
+			</div>
 		</form>
 	</div>
 	<div id="events-container" class="col-md-12">

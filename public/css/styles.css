@@ -75,6 +75,29 @@ header {
     margin: 0 auto;
 }
 
+#input-container {
+    position: relative;
+}
+  
+#input-container .search-icon {
+    color: #999;
+    position: absolute;
+    left: 0.625rem;
+    top: 50%;
+    font-size: 1.25rem;
+    transform: translateY(-50%);
+}
+
+#input-container .search-icon ion-icon {
+    padding: 0.625rem;
+    min-width: 2.5rem;
+}
+
+#search {
+    width: 100%;
+    padding: 0.625rem 0.625rem 0.625rem 3.75rem ;
+}
+
 /* Events List */
 #events-container {
     padding: 3.125rem;
@@ -123,12 +146,14 @@ header {
 /* footer */
 
 footer {
+    display: flex;
     color: #fff;
     background-color: #353e48;
     width: 100%;
-    padding: 1.875rem;
+    padding: 0.938rem;
     bottom: 0;
     position: absolute;
+    align-items: center;
 }
 
 footer p {
