@@ -112,9 +112,9 @@ header {
 }
 
 #events-container .card {
-    max-width: 25%;
+    max-width: 20%;
     padding: 0;
-    margin: 0.313rem;
+    margin: 1.875rem;
     border-radius: 0.625rem;
 }
 
@@ -142,10 +142,29 @@ header {
     font-size: 0.875rem;
 }
 
+/* Event create page */
+
+#event-create-container {
+    padding-top: 3.125rem;
+    padding-bottom: 3.125rem;
+}
+
+#event-create-container label {
+    font-weight: 700;
+}
+
+#event-create-container input,
+#event-create-container select,
+#event-create-container textarea {
+    font-size: 0.875rem;
+}
+
 /* footer */
 
 footer {
     background-color: #eceff1;
+    width: 100%;
+    bottom: 0;
 }
 
 .copyright {

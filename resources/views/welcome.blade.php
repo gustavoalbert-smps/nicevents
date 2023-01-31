@@ -17,7 +17,7 @@
 	<div id="events-container" class="col-md-12">
 		<h2>Próximos Eventos</h2>
 		<p class="subtitle">Veja os eventos dos próximos dias</p>
-		<div id="cards-container" class="d-flex justify-content-around row ">
+		<div id="cards-container" class="d-flex justify-content-between row ">
 			@foreach($events as $event)
 			<div class="card col-md-3">
 				<img src="/img/event_placeholder.jpg" alt="{{ $event->title }}">
