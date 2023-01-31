@@ -32,6 +32,17 @@ header {
     border-color: #c73d3d;
 }
 
+.alert {
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.success {
+    margin-bottom: 0;
+    text-align: center;
+}
+
 /* navbar */
 #navbar img {
     width: 2.5rem;

@@ -42,7 +42,18 @@
                 </div>
             </nav>
         </header>
-        @yield('content')
+        <main>
+            <div class="container-fluid">
+                <div class="row">
+                    @if(session('success'))
+                    <div class="alert alert-success" role="alert">
+                        <p class="success">{{ session('success') }}</p>
+                    </div>
+                    @endif
+                    @yield('content')
+                </div>
+            </div>
+        </main>
         <footer class="text-center text-lg-start text-dark">
             <section class="d-flex justify-content-between p-3 text-white" style="background-color: #ff5c5c;">
                 <div class="mr-5">
