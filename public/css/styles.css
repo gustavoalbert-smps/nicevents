@@ -153,6 +153,11 @@ header {
     font-size: 0.875rem;
 }
 
+/* No events Image */
+#noevents-image {
+    clear: right;
+}
+
 /* Event create page */
 
 #event-create-container {
