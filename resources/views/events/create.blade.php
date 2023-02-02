@@ -31,6 +31,24 @@
         <option value="0">Não</option>
       </select>
     </div>
+    <div class="form-group" id="checklist-container">
+      <label for="">No seu evento irá ter ?</label>
+      <div class="form-group">
+        <input type="checkbox" name="items[]" value="Cadeiras"> Cadeiras
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="items[]" value="Palco"> Palco
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="items[]" value="Open Drink"> Open Drink
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="items[]" value="Open Food"> Open Food
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="items[]" value="Brindes"> Brindes
+      </div>
+    </div>
     <input type="submit" class="btn btn-primary" value="Cadastrar Evento">
   </form>
 </div>

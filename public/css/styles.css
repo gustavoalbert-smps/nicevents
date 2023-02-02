@@ -170,6 +170,10 @@ header {
     font-size: 0.875rem;
 }
 
+#checklist-container input[type=checkbox] {
+    border-radius: 0.5rem;
+}
+
 /* Event Page */
 #image-container,
 #info-container {
@@ -210,6 +214,16 @@ header {
 
 #info-container #event-submit {
     margin: 1.25rem 0;
+}
+
+#items-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+#items-list li {
+    display: flex;
+    align-items: center;
 }
 
 /* footer */
