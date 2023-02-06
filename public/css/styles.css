@@ -43,6 +43,11 @@ header {
     text-align: center;
 }
 
+#span-search {
+    padding-left: 0.563rem;
+    color: #a0a0a0;
+}
+
 /* navbar */
 #navbar img {
     width: 2.5rem;
@@ -125,7 +130,7 @@ header {
 #events-container .card {
     max-width: 20%;
     padding: 0;
-    margin: 1.875rem;
+    margin: 1.875rem 0;
     border-radius: 0.625rem;
 }
 
@@ -133,6 +138,10 @@ header {
     max-height: 12.5rem;
     border-top-left-radius: 0.625rem;
     border-top-right-radius: 0.625rem;
+}
+
+#event-card:nth-of-type(n+3) {
+    justify-content: space-between;
 }
 
 .card .card-date {
