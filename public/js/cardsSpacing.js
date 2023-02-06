@@ -4,8 +4,6 @@ function cardSpacing() {
 
   var countCards = cards.length;
 
-  console.log(countCards);
-
   if (countCards > 2) {
     targetElement.classList.add("justify-content-between");
   } else if (countCards == 2 ) {
