@@ -39,6 +39,7 @@ class EventController extends Controller
     }
 
     public function dashboard() {
+
         $user = auth()->user();
 
         $events = $user->events;
@@ -77,5 +78,12 @@ class EventController extends Controller
         $event->save();
 
         return redirect('/')->with('success', 'Evento cadastrado com sucesso!');
+    }
+
+    public function destroy($id) {
+
+        Event::findOrFail($id)->delete();
+
+        return redirect('/dashboard')->with('deleted', 'Evento excluído com sucesso!');
     }
 }

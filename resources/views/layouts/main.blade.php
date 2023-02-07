@@ -66,6 +66,10 @@
                     <div class="alert alert-success" role="alert">
                         <p class="success">{{ session('success') }}</p>
                     </div>
+                    @elseif (session('deleted'))
+                    <div class="alert alert-warning" role="alert">
+                        <p class="deleted">{{session('deleted')}}</p>
+                    </div>
                     @endif
                     @yield('content')
                 </div>
