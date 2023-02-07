@@ -13,6 +13,10 @@ header {
     border-bottom: 0.063rem solid #ccc;
 }
 
+main {
+    padding-bottom: 23.875rem;
+}
+
 .row {
     margin: 0;
 }
@@ -135,7 +139,7 @@ header {
 }
 
 #events-container img {
-    max-height: 12.5rem;
+    max-height: 9.5rem;
     border-top-left-radius: 0.625rem;
     border-top-right-radius: 0.625rem;
 }
@@ -240,11 +244,23 @@ header {
     align-items: center;
 }
 
+/* Dashboard */
+.dashboard-title-container {
+    margin-top: 1.875rem;
+    margin-bottom: 1.875rem;
+}
+
+.dashboard-title-container th {
+    width: 25%;
+}
+
 /* footer */
 
 footer {
     background-color: #eceff1;
+    position: absolute;
     width: 100%;
+    height: 23.875rem;
     bottom: 0;
 }
 
