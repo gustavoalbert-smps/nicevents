@@ -42,7 +42,17 @@ main {
     margin-bottom: 0;
 }
 
+.alert-warning {
+    background-color: #fc7b31;
+    border-color: #e06e2c;
+}
+
 .success {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.deleted {
     margin-bottom: 0;
     text-align: center;
 }
@@ -250,8 +260,22 @@ main {
     margin-bottom: 1.875rem;
 }
 
-.dashboard-title-container th {
+.dashboard-events-container th:nth-child(n+2) {
     width: 25%;
+}
+
+.dashboard-events-container form {
+    display: inline-block;
+}
+
+.delete-btn {
+    color: #fff;
+    background-color: #fc7b31;
+}
+
+.delete-btn:hover {
+    color: #fff;
+    background-color: #c45d21;
 }
 
 /* footer */
