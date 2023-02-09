@@ -31,8 +31,8 @@
     <div class="form-group">
       <label for="private">O evento é privado ?</label>
       <select id="private" name="private" class="form-control">
-        <option value="1">Sim</option>
         <option value="0">Não</option>
+        <option value="1">Sim</option>
       </select>
     </div>
     <div class="form-group" id="checklist-container">

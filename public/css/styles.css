@@ -278,6 +278,46 @@ main {
     background-color: #c45d21;
 }
 
+/* Edit event page*/
+.img-preview {
+    width: 12.5rem;
+    border-radius: 0.625rem;
+    padding: 0.625rem 0.625rem 0.625rem 0;
+}
+
+#banner-group {
+    display: inline-block;
+    width: 100%;
+}
+
+.arrows ion-icon {
+    display: block;
+    width: 12.5rem;
+    font-size: 1.875rem;
+    color: #4983ff;
+}
+
+.image-preview-container {
+    border-radius: 3.625rem
+}
+
+#banner-group th {
+    color: #4983ff;
+    padding-top:  0.625rem;
+}
+
+#banner-group th:nth-child(1) {
+    padding-left: 0.625rem;
+}
+
+#banner-group table {
+    background-color: #f3f3f3;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+#banner-group #image:nth-child(1) {
+    padding-left: 0.313rem;
+}
 /* footer */
 
 footer {
