@@ -53,6 +53,7 @@ main {
 }
 
 .deleted {
+    color: #000;
     margin-bottom: 0;
     text-align: center;
 }
@@ -254,6 +255,19 @@ main {
     align-items: center;
 }
 
+.alredy-join-btn {
+    color: #757575;
+    background-color: #dbdbdb;
+    margin: 0.938rem 0;
+    pointer-events: none;
+    vertical-align: middle;
+}
+
+#info-container ion-icon.checkmark-circle-outline {
+    color: #757575;
+    vertical-align: middle;
+}
+
 /* Dashboard */
 .dashboard-title-container {
     margin-top: 1.875rem;
@@ -276,6 +290,14 @@ main {
 .delete-btn:hover {
     color: #fff;
     background-color: #c45d21;
+}
+
+.leave-btn {
+    background-color: #ff5c5c;
+}
+
+.leave-btn:hover {
+    background-color: #c73d3d;;
 }
 
 /* Edit event page*/
