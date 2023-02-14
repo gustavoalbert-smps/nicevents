@@ -6,6 +6,7 @@ Use App\Models\Event;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Validator;
 
 class EventController extends Controller
 {
@@ -87,6 +88,24 @@ class EventController extends Controller
     }
     
     public function store(Request $request) {
+
+        $rules = [
+            'image' => 'required|image',
+            'title' => 'required|unique:events|max:50',
+            'date' => 'required|date',
+            'description' => 'required|max:7000',
+            'city' => 'required|max:120',
+            'items' => 'required'
+        ];
+
+        $customErrorMessages = [
+            'required' => 'Preencha o campo vazio.',
+            'max' => 'Por favor preencha no máximo :size caracteres.',
+            'title.unique' => 'Já existe um evento com este título.',
+            'image.image' => 'O arquivo deve ser uma imagem.'
+        ];
+
+        $request->validate($rules, $customErrorMessages);
 
         $event = new Event();
 
