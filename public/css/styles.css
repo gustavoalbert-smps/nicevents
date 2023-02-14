@@ -203,6 +203,29 @@ main {
     border-radius: 0.5rem;
 }
 
+.message-container {
+    margin-top: 1rem;
+}
+
+.message-container .alert {
+    padding: 0.55rem 1.25rem;
+}
+
+.message-container .invalid {
+    background-color: #ff7373;
+    border-color: #f55f5f;
+}
+
+.message-container p {
+    color: #fff;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.message-container ion-icon {
+    color: #fff;
+}
+
 /* Event Page */
 #image-container,
 #info-container {
