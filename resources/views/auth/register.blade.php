@@ -1,32 +1,66 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img src="/img/niceventslogo-removebg.png" alt="">
         </x-slot>
-
-        <x-jet-validation-errors class="mb-4" />
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <div>
                 <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" autofocus autocomplete="name" />
+                @error('name')
+                    <div class="container-fluid message-container">
+                        <div class="row">
+                            <span class="block alert invalid invalid-jetstream" role="alert">
+                            <p>{{$message}} <ion-icon name="alert-circle-outline"></ion-icon></p>
+                            </span>
+                        </div>
+                    </div>
+                @enderror
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" />
+                @error('email')
+                    <div class="container-fluid message-container">
+                        <div class="row">
+                            <span class="block alert invalid invalid-jetstream" role="alert">
+                            <p>{{$message}} <ion-icon name="alert-circle-outline"></ion-icon></p>
+                            </span>
+                        </div>
+                    </div>
+                @enderror
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" autocomplete="new-password" />
+                @error('password')
+                    <div class="container-fluid message-container">
+                        <div class="row">
+                            <span class="block alert invalid invalid-jetstream" role="alert">
+                            <p>{{$message}} <ion-icon name="alert-circle-outline"></ion-icon></p>
+                            </span>
+                        </div>
+                    </div>
+                @enderror
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" autocomplete="new-password" />
+                @error('password_confirmation')
+                    <div class="container-fluid message-container">
+                        <div class="row">
+                            <span class="block alert invalid invalid-jetstream" role="alert">
+                            <p>{{$message}} <ion-icon name="alert-circle-outline"></ion-icon></p>
+                            </span>
+                        </div>
+                    </div>
+                @enderror
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

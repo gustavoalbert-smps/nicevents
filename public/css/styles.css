@@ -363,6 +363,12 @@ main {
 #banner-group #image:nth-child(1) {
     padding-left: 0.313rem;
 }
+
+/* Jetstream Register View */
+.invalid-jetstream .alert {
+    display: block;
+}   
+
 /* footer */
 
 footer {
