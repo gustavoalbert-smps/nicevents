@@ -367,7 +367,11 @@ main {
 /* Jetstream Register View */
 .invalid-jetstream .alert {
     display: block;
-}   
+}
+
+div .min-h-screen {
+    background-color: #212121;
+}
 
 /* footer */
 
