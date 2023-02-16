@@ -10,7 +10,7 @@
 		<form action="/" method="GET">
 			<div id="input-container">
 				<ion-icon name="search-outline" class="search-icon"></ion-icon>
-				<input type="text" id="search" name="search" placeholder="Buscar" class="form-control" >
+				<input type="text" id="search" name="search" placeholder="Buscar por eventos" class="form-control" >
 			</div>
 		</form>
 	</div>
