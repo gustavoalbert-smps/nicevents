@@ -58,6 +58,19 @@
         <option value="1" {{ $event->private == 1 ? "selected = 'selected'": "" }}>Sim</option>
       </select>
     </div>
+    <div class="form-group">
+      <label for="category">Qual o tipo de evento ?</label>
+      <select id="category" name="category" class="form-control">
+        <option value="{{ $event->category }}" selected>{{ $event->category }}</option>
+        <option value="Evento Social">Evento Social</option>
+        <option value="Evento de Tecnologia">Evento de Tecnologia</option>
+        <option value="Evento Corporativo">Evento Corporativo</option>
+        <option value="Evento Religioso">Evento Religioso</option>
+        <option value="Evento Educacional">Evento Educacional</option>
+        <option value="Evento de Entretenimento e Lazer">Evento de Entretenimento e Lazer</option>
+        <option value="Evento Esportivo">Evento Esportivo</option>
+      </select>
+    </div>
     <div class="form-group" id="checklist-container">
       <label for="">No seu evento irá ter ?</label>
       <div class="form-group">
