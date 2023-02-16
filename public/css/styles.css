@@ -5,13 +5,16 @@
 
 body {
     min-height: 100vh;
-    padding-bottom: 6.25rem;
     position: relative;
 }
 
 header {
     background-color: #fff;
     border-bottom: 0.063rem solid #ccc;
+}
+
+main {
+    padding-bottom: 23.875rem;
 }
 
 .row {
@@ -31,6 +34,33 @@ header {
 .btn-primary:hover {
     background-color: #c73d3d;
     border-color: #c73d3d;
+}
+
+.alert {
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.alert-warning {
+    background-color: #fc7b31;
+    border-color: #e06e2c;
+}
+
+.success {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.deleted {
+    color: #000;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+#span-search {
+    padding-left: 0.563rem;
+    color: #a0a0a0;
 }
 
 /* navbar */
@@ -59,7 +89,7 @@ header {
     height: 25rem;
     padding: 3.125px;
     text-align: center;
-    background-image: url("../img/banner.jpg");
+    background-image: url("../img/nicevents-banner.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -73,6 +103,29 @@ header {
 #search-container form {
     width: 50%;
     margin: 0 auto;
+}
+
+#input-container {
+    position: relative;
+}
+  
+#input-container .search-icon {
+    color: #999;
+    position: absolute;
+    left: 0.625rem;
+    top: 50%;
+    font-size: 1.25rem;
+    transform: translateY(-50%);
+}
+
+#input-container .search-icon ion-icon {
+    padding: 0.625rem;
+    min-width: 2.5rem;
+}
+
+#search {
+    width: 100%;
+    padding: 0.625rem 0.625rem 0.625rem 3.75rem ;
 }
 
 /* Events List */
@@ -90,16 +143,20 @@ header {
 }
 
 #events-container .card {
-    max-width: 25%;
+    max-width: 20%;
     padding: 0;
-    margin: 0.313rem;
+    margin: 1.875rem 0;
     border-radius: 0.625rem;
 }
 
 #events-container img {
-    max-height: 12.5rem;
+    max-height: 9.5rem;
     border-top-left-radius: 0.625rem;
     border-top-right-radius: 0.625rem;
+}
+
+#event-card:nth-of-type(n+3) {
+    justify-content: space-between;
 }
 
 .card .card-date {
@@ -120,17 +177,233 @@ header {
     font-size: 0.875rem;
 }
 
+/* No events Image */
+#noevents-image {
+    clear: right;
+}
+
+/* Event create page */
+
+#event-create-container {
+    padding-top: 3.125rem;
+    padding-bottom: 3.125rem;
+}
+
+#event-create-container label {
+    font-weight: 700;
+}
+
+#event-create-container input,
+#event-create-container select,
+#event-create-container textarea {
+    font-size: 0.875rem;
+}
+
+#checklist-container input[type=checkbox] {
+    border-radius: 0.5rem;
+}
+
+.message-container {
+    margin-top: 1rem;
+}
+
+.message-container .alert {
+    padding: 0.55rem 1.25rem;
+}
+
+.message-container .invalid {
+    background-color: #ff7373;
+    border-color: #f55f5f;
+}
+
+.message-container p {
+    color: #fff;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.message-container ion-icon {
+    color: #fff;
+}
+
+/* Event Page */
+#image-container,
+#info-container {
+    margin-top: 1.875rem;
+}
+
+#image-container {
+    margin-bottom: 0.938rem;
+}
+
+#event-image {
+    max-width: 45rem;
+    border-radius: 0.625rem;
+}
+
+#info-container h1 {
+    font-size: 2.25rem;
+    font-weight: 900;
+}
+
+#info-container p {
+    margin: 0 0 0.438rem 0;
+    font-size: 0.875rem;
+    display: flex;
+}
+
+#info-container h3,
+#description-container h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+#info-container ion-icon {
+    font-size: 1.35rem;
+    color: #ff5c5c;
+    margin-right: 0.313rem;
+}
+
+#info-container #event-submit {
+    margin: 1.25rem 0;
+}
+
+#items-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+#items-list li {
+    display: flex;
+    align-items: center;
+}
+
+.alredy-join-btn {
+    color: #757575;
+    background-color: #dbdbdb;
+    margin: 0.938rem 0;
+    pointer-events: none;
+    vertical-align: middle;
+}
+
+#info-container ion-icon.checkmark-circle-outline {
+    color: #757575;
+    vertical-align: middle;
+}
+
+/* Dashboard */
+.dashboard-title-container {
+    margin-top: 1.875rem;
+    margin-bottom: 1.875rem;
+}
+
+.dashboard-events-container th:nth-child(n+2) {
+    width: 25%;
+}
+
+.dashboard-events-container form {
+    display: inline-block;
+}
+
+.delete-btn {
+    color: #fff;
+    background-color: #fc7b31;
+}
+
+.delete-btn:hover {
+    color: #fff;
+    background-color: #c45d21;
+}
+
+.leave-btn {
+    background-color: #ff5c5c;
+}
+
+.leave-btn:hover {
+    background-color: #c73d3d;;
+}
+
+/* Edit event page*/
+.img-preview {
+    width: 12.5rem;
+    border-radius: 0.625rem;
+    padding: 0.625rem 0.625rem 0.625rem 0;
+}
+
+#banner-group {
+    display: inline-block;
+    width: 100%;
+}
+
+.arrows ion-icon {
+    display: block;
+    width: 12.5rem;
+    font-size: 1.875rem;
+    color: #4983ff;
+}
+
+.image-preview-container {
+    border-radius: 3.625rem
+}
+
+#banner-group th {
+    color: #4983ff;
+    padding-top:  0.625rem;
+}
+
+#banner-group th:nth-child(1) {
+    padding-left: 0.625rem;
+}
+
+#banner-group table {
+    background-color: #f3f3f3;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+#banner-group #image:nth-child(1) {
+    padding-left: 0.313rem;
+}
+
+/* Jetstream Register View */
+.invalid-jetstream .alert {
+    display: block;
+}
+
+div .min-h-screen {
+    background-color: #212121;
+}
+
 /* footer */
 
 footer {
-    color: #fff;
-    background-color: #353e48;
-    width: 100%;
-    padding: 1.875rem;
-    bottom: 0;
+    background-color: #eceff1;
     position: absolute;
+    width: 100%;
+    height: 23.875rem;
+    bottom: 0;
 }
 
-footer p {
+.copyright {
+    background-color: #00000033;
+}
+
+.useful-links a {
+    text-decoration: none;
+}
+
+.useful-links a:hover {
+    color: #ff5c5c !important;
+}
+
+.services a {
+    text-decoration: none;
+}
+
+.services a:hover {
+    color: #ff5c5c !important; 
+}
+
+#p-nicevents {
     margin-bottom: 0;
+    font-weight:700 !important;
 }
