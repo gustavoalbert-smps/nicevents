@@ -83,7 +83,7 @@
     <div class="form-group">
       <label for="category">Qual o tipo de evento ?</label>
       <select id="category" name="category" class="form-control">
-        <option value="null" selected>- - - - - - -</option>
+        <option value="">- - - - - - -</option>
         <option value="Evento Social">Evento Social</option>
         <option value="Evento de Tecnologia">Evento de Tecnologia</option>
         <option value="Evento Corporativo">Evento Corporativo</option>
@@ -92,6 +92,15 @@
         <option value="Evento de Entretenimento e Lazer">Evento de Entretenimento e Lazer</option>
         <option value="Evento Esportivo">Evento Esportivo</option>
       </select>
+      @error('category')
+        <div class="container-fluid message-container">
+          <div class="row">
+            <span class="alert invalid" role="alert">
+              <p>{{$message}} <ion-icon name="alert-circle-outline"></ion-icon></p>
+            </span>
+          </div>
+        </div>
+      @enderror
     </div>
     <div class="form-group" id="checklist-container">
       <label for="">No seu evento irá ter ?</label>

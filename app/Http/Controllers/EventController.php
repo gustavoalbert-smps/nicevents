@@ -6,6 +6,7 @@ Use App\Models\Event;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Validator;
 
 class EventController extends Controller
@@ -94,6 +95,16 @@ class EventController extends Controller
             'title' => 'required|unique:events|max:50',
             'date' => 'required|date',
             'description' => 'required|max:7000',
+            'category' => ['required', 
+                            Rule::in([
+                                'Evento Social',
+                                'Evento de Tecnologia',
+                                'Evento Corporativo',
+                                'Evento Religioso',
+                                'Evento Educacional',
+                                'Evento de Entretenimento e Lazer',
+                                'Evento Esportivo'
+                            ])],
             'city' => 'required|max:120',
             'items' => 'required'
         ];
@@ -113,6 +124,7 @@ class EventController extends Controller
         $event->date = $request->date;
         $event->city = $request->city;
         $event->description = $request->description;
+        $event->category = $request->category;
         $event->private = $request->private;
         $event->items = $request->items;
 
