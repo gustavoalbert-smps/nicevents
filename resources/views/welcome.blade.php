@@ -4,7 +4,7 @@
 
 @section('content')
 
-	{{-- <img src="/img/banner.webp" alt="banner"> --}}
+	
 	<div id="search-container" class="col-md-12">
 		<img class="my-4" src="/img/niceventslogo-removebg.png" alt="search-logo">
 		<form action="/" method="GET">
@@ -16,7 +16,10 @@
 	</div>
 	<div id="events-container" class="col-md-12">
 		@if ($search)
-			<h2>Resultados da sua busca por: <span id="span-search">{{$search}}</span></h2>	
+			<h2>Resultados da sua busca por: <span id="span-search">{{$search}}</span></h2>
+			@if($similar === true && count($events) != 0)
+				<p>Não foi possível encontrar nenhum evento correspondente a sua pesquisa. Veja alguns semelhantes:</p>
+			@endif
 		@else
 			<h2>Próximos Eventos</h2>		
 			<p class="subtitle">Veja os eventos dos próximos dias</p>
@@ -34,11 +37,11 @@
 			</div>
 			@endforeach
 		</div>
-		@if(count($events) == 0 && $search)
+		@if(count($events) == 0 && $search && $similar === false)
 			<p>Não foi possível encontrar nenhum evento!</p>
 			<a href="/">Ver todos os eventos</a>
 		@elseif(count($events) == 0)
-			<p>Não há eventos no disponíveis</p>
+			<p>Não há eventos disponíveis</p>
 			<img id="noevents-image" class="float-right" src="/img/no_events.svg" alt="no_events">
 		@endif
 	</div>

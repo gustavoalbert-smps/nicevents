@@ -15,15 +15,99 @@ class EventController extends Controller
 
         $search = request('search');
 
+        $similar = false;
+
+        $socialEvents = ['casamento','noivado','aniversário','aniversario','happy hours','churrasco','chá','almoço','jantar','debut','premiação'];
+        $techEvents = ['php','js','java','ruby','c++','c#','python','flutter','laravel','mobile','startup','javascript','digital','expo','summit','dart','typescript','go','flask'];
+        $corporateEvents = ['feira','conferencia','conferência','reunião','networking','treinamento','congresso','posse'];
+        $religiousEvent = ['retiro','beneficente','espiritual','cristianismo','islamismo','hinduísmo','ateísmo','agnóstico','budismo','budista','judaísmo','judeu','cristão','batizado','comunhão'];
+        $educationalEvent = ['formatura','simpósio','palestra','seminário','curso','workshop','mesa redonda','webinar','convenção'];
+        $entertainmentEvent = ['festival','música','balada','musical','show','festa','sarau','exposição','artística','zumba','desfile','leilão','concurso','autógrafos','comic','anime'];
+        $sportsEvent = ['corrida','campeonato','jogos','competição','gincana','torneio','olimpíada'];
+
         if($search) {
+
             $events = Event::where([
                 ['title', 'like', '%'.$search.'%']
             ])->get();
+
+            if(count($events) == 0) {
+
+                $searchToLower = strtolower($search);
+                $searchExplode = explode(" ",$searchToLower);
+
+                foreach ($searchExplode as $searchString) {
+                    if (in_array($searchString, $socialEvents, true)){
+
+                        $events = Event::where([
+                            ['category', 'like', 'Evento Social']
+                        ])->get();
+
+                        $similar = true;
+                        break;
+
+                    } elseif (in_array($searchString, $techEvents, true)) {
+
+                        $events = Event::where([
+                            ['category', 'like', 'Evento de Tecnologia']
+                        ])->get();
+
+                        $similar = true;
+                        break;
+                        
+                    } elseif (in_array($searchString, $corporateEvents, true)) {
+
+                        $events = Event::where([
+                            ['category', 'like', 'Evento Corporativo']
+                        ])->get();
+
+                        $similar = true;
+                        break;
+
+                    } elseif (in_array($searchString, $religiousEvent, true)) {
+                        
+                        $events = Event::where([
+                            ['category', 'like', 'Evento Religioso']
+                        ])->get();
+
+                        $similar = true;
+                        break;
+
+                    } elseif (in_array($searchString, $educationalEvent, true)) {
+                        
+                        $events = Event::where([
+                            ['category', 'like', 'Evento Educacional']
+                        ])->get();
+
+                        $similar = true;
+                        break;
+
+                    } elseif (in_array($searchString, $entertainmentEvent, true)) {
+                        
+                        $events = Event::where([
+                            ['category', 'like', 'Evento de Entretenimento e Lazer']
+                        ])->get();
+
+                        $similar = true;
+                        break;
+
+                    } elseif (in_array($searchString, $sportsEvent, true)) {
+                        
+                        $events = Event::where([
+                            ['category', 'like', 'Evento Esportivo']
+                        ])->get();
+
+                        $similar = true;
+                        break;
+
+                    }
+                }
+            }
         } else {
             $events = Event::all();
         }
 
-        return view('welcome', ['events' => $events, 'search' => $search]);
+        return view('welcome', ['events' => $events, 'search' => $search, 'similar' => $similar]);
     }
 
     public function create() {
