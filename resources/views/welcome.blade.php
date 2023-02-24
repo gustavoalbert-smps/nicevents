@@ -19,6 +19,9 @@
 			<h2>Resultados da sua busca por: <span id="span-search">{{$search}}</span></h2>
 			@if($similar === true && count($events) != 0)
 				<p>Não foi possível encontrar nenhum evento correspondente a sua pesquisa. Veja alguns semelhantes:</p>
+			@else
+				<p>Não foi possível encontrar nenhum evento!</p>
+				<a href="/">Ver todos os eventos</a>
 			@endif
 		@else
 			<h2>Próximos Eventos</h2>		
@@ -37,10 +40,10 @@
 			</div>
 			@endforeach
 		</div>
-		@if(count($events) == 0 && $search && $similar === false)
+		@if(count($events) === 0 && $search === true && $similar === false)
 			<p>Não foi possível encontrar nenhum evento!</p>
 			<a href="/">Ver todos os eventos</a>
-		@elseif(count($events) == 0)
+		@elseif(count($events) == 0 && $search == false)
 			<p>Não há eventos disponíveis</p>
 			<img id="noevents-image" class="float-right" src="/img/no_events.svg" alt="no_events">
 		@endif
