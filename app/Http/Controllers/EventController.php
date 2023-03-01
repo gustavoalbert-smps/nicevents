@@ -6,12 +6,14 @@ Use App\Models\Event;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Validator;
 
 class EventController extends Controller
 {
-    public function index() {
+    public function index() 
+    {
 
         $search = request('search');
 
@@ -25,6 +27,20 @@ class EventController extends Controller
         $entertainmentEvent = ['festival','música','balada','musical','show','festa','sarau','exposição','artística','zumba','desfile','leilão','concurso','autógrafos','comic','anime'];
         $sportsEvent = ['corrida','campeonato','jogos','competição','gincana','torneio','olimpíada'];
 
+        $accessData = DB::select('select url,count from access_counts');
+
+        $eventsAccessArray = json_decode(json_encode($accessData), true);
+
+        $listEventsWithAccess = [];
+
+        for ($i=0; $i < count($eventsAccessArray); $i++) {
+
+            $parts = explode('/',$eventsAccessArray[$i]['url']);
+            $id = end($parts);
+            $listEventsWithAccess[] = ['id' => $id, 'count' => $eventsAccessArray[$i]['count']];
+
+        }
+
         if($search) {
 
             $events = Event::where([
@@ -37,6 +53,7 @@ class EventController extends Controller
                 $searchExplode = explode(" ",$searchToLower);
 
                 foreach ($searchExplode as $searchString) {
+
                     if (in_array($searchString, $socialEvents, true)){
 
                         $events = Event::where([
@@ -105,17 +122,31 @@ class EventController extends Controller
             }
         } else {
             $events = Event::all();
+
+            $listEventsInEvidence = [];
+
+            for ($i=0; $i < count($listEventsWithAccess); $i++) {
+
+                $eventInEvidence = Event::findOrFail($listEventsWithAccess[$i]['id']);
+
+                $participants = $eventInEvidence->users;
+
+                $listEventsInEvidence[] = ['event' => $eventInEvidence, 'count' => $listEventsWithAccess[$i]['count'], 'participant' => count($participants)];
+
+            }
         }
 
-        return view('welcome', ['events' => $events, 'search' => $search, 'similar' => $similar]);
+        return view('welcome', ['events' => $events, 'search' => $search, 'similar' => $similar, 'eventsInEvidence' => $listEventsInEvidence]);
     }
 
-    public function create() {
+    public function create() 
+    {
         
         return view('events.create');
     }
 
-    public function show($id) {
+    public function show($id) 
+    {
 
         $user = auth()->user();
 
@@ -139,7 +170,8 @@ class EventController extends Controller
         return view('events.show', ['event' => $event, 'eventOwner' => $eventOwner, 'hasUserJoined' => $hasUserJoined]);
     }
 
-    public function dashboard() {
+    public function dashboard() 
+    {
 
         $user = auth()->user();
 
@@ -150,7 +182,8 @@ class EventController extends Controller
         return view('events.dashboard', ['events' => $events, 'eventsasparticipant' => $eventsAsParticipant]);
     }
 
-    public function joinEvent($id) {
+    public function joinEvent($id) 
+    {
 
         $user = auth()->user();
 
@@ -161,7 +194,8 @@ class EventController extends Controller
         return redirect('/dashboard')->with('success', 'Presença confirmada no evento ['.$event->title.'] com Sucesso!');
     }
 
-    public function leaveEvent($id) {
+    public function leaveEvent($id) 
+    {
 
         $user = auth()->user();
 
@@ -172,7 +206,8 @@ class EventController extends Controller
         return redirect('/dashboard')->with('deleted', 'Você removeu sua presença no evento ['.$event->title.']');
     }
     
-    public function store(Request $request) {
+    public function store(Request $request) 
+    {
 
         $rules = [
             'image' => 'required|image',
@@ -234,7 +269,8 @@ class EventController extends Controller
         return redirect('/')->with('success', 'Evento cadastrado com sucesso!');
     }
 
-    public function edit($id) {
+    public function edit($id) 
+    {
 
         $user = auth()->user();
 
@@ -247,7 +283,8 @@ class EventController extends Controller
         return view('events.edit', ['event' => $event]);
     }
 
-    public function update(Request $request) {
+    public function update(Request $request) 
+    {
 
         $data = $request->all();
 
@@ -269,7 +306,8 @@ class EventController extends Controller
         return redirect('/dashboard')->with('success', 'Evento editado com sucesso!');
     }
 
-    public function destroy($id) {
+    public function destroy($id) 
+    {
 
         Event::findOrFail($id)->delete();
 
