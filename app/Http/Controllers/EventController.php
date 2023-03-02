@@ -27,20 +27,6 @@ class EventController extends Controller
         $entertainmentEvent = ['festival','música','balada','musical','show','festa','sarau','exposição','artística','zumba','desfile','leilão','concurso','autógrafos','comic','anime'];
         $sportsEvent = ['corrida','campeonato','jogos','competição','gincana','torneio','olimpíada'];
 
-        $accessData = DB::select('select url,count from access_counts');
-
-        $eventsAccessArray = json_decode(json_encode($accessData), true);
-
-        $listEventsWithAccess = [];
-
-        for ($i=0; $i < count($eventsAccessArray); $i++) {
-
-            $parts = explode('/',$eventsAccessArray[$i]['url']);
-            $id = end($parts);
-            $listEventsWithAccess[] = ['id' => $id, 'count' => $eventsAccessArray[$i]['count']];
-
-        }
-
         if($search) {
 
             $events = Event::where([
@@ -123,17 +109,48 @@ class EventController extends Controller
         } else {
             $events = Event::all();
 
+            $accessData = DB::select('select url,count from access_counts');
+
+            $eventsAccessArray = json_decode(json_encode($accessData), true);
+
+            $listEventsWithAccess = [];
+
+            for ($i=0; $i < count($eventsAccessArray); $i++) {
+
+                $parts = explode('/',$eventsAccessArray[$i]['url']);
+                $id = end($parts);
+                $listEventsWithAccess[] = ['id' => $id, 'count' => $eventsAccessArray[$i]['count']];
+
+            }
+
             $listEventsInEvidence = [];
 
             for ($i=0; $i < count($listEventsWithAccess); $i++) {
 
                 $eventInEvidence = Event::findOrFail($listEventsWithAccess[$i]['id']);
 
-                $participants = $eventInEvidence->users;
+                $participants = count($eventInEvidence->users);
 
-                $listEventsInEvidence[] = ['event' => $eventInEvidence, 'count' => $listEventsWithAccess[$i]['count'], 'participant' => count($participants)];
+                $currentAccessCount = $listEventsWithAccess[$i]['count'];
+
+                $average = (2*$currentAccessCount)+(5*$participants)/7;
+
+                $listEventsInEvidence[] = ['event' => $eventInEvidence, 'average' => $average];
 
             }
+
+            function cmp($a, $b)
+            {
+
+                if ($a['average'] == $b['average']) {
+                    return 0;
+                }
+                return ($a['average'] > $b['average']) ? -1 : 1;
+
+            }
+
+            usort($listEventsInEvidence, 'App\Http\Controllers\cmp');
+
         }
 
         return view('welcome', ['events' => $events, 'search' => $search, 'similar' => $similar, 'eventsInEvidence' => $listEventsInEvidence]);
