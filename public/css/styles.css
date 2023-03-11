@@ -28,6 +28,8 @@ main {
 .btn-primary {
     color: #000;
     background-color: #ff5c5c;
+    position: absolute;
+    bottom: 1.25rem;
     border: 0.063rem solid #c73d3d;
 }
 
@@ -134,12 +136,13 @@ main {
 }
 
 #events-container h2 {
+    margin-top: 1.875rem;
     margin-bottom: 0.625rem;
 }
 
 #events-container .subtitle {
     color: #757575;
-    margin-bottom: 1.875rem;
+    margin-bottom: 0.675rem;
 }
 
 #events-container .card {
@@ -159,6 +162,11 @@ main {
     justify-content: space-between;
 }
 
+.card-body {
+    position: relative;
+    padding-bottom: 3.625rem;
+}
+
 .card .card-date {
     color: #ccc;
     font-size: 0.75rem;
@@ -169,11 +177,12 @@ main {
     color: #212121;
     font-size: 1.25rem;
     font-weight: 700;
-    margin-bottom: 1.875rem;
+    margin-bottom: 0.625rem;
 }
 
 .card-participants {
     color: #757575;
+    margin-bottom: 1.25rem;
     font-size: 0.875rem;
 }
 

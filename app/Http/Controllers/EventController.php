@@ -228,7 +228,7 @@ class EventController extends Controller
 
         $rules = [
             'image' => 'required|image',
-            'title' => 'required|unique:events|max:50',
+            'title' => 'required|unique:events|max:100',
             'date' => 'required|date',
             'description' => 'required|max:7000',
             'category' => ['required', 
@@ -247,7 +247,7 @@ class EventController extends Controller
 
         $customErrorMessages = [
             'required' => 'Preencha o campo vazio.',
-            'max' => 'Por favor preencha no máximo :size caracteres.',
+            'max' => 'Por favor preencha no máximo :max caracteres.',
             'title.unique' => 'Já existe um evento com este título.',
             'image.image' => 'O arquivo deve ser uma imagem.'
         ];
