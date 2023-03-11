@@ -4,11 +4,25 @@ function cardSpacing() {
 
   var countCards = cards.length;
 
-  if (countCards > 2) {
+  if (countCards > 4) {
     targetElement.classList.add("justify-content-between");
-  } else if (countCards == 2 ) {
+  } else {
     cards.forEach(card => card.classList.add("mr-4"));
   }
 }
 
+function featuredCardSpacing() {
+  const cards = document.querySelectorAll('#featured-event-card');
+  const targetElement = document.getElementById('featured-cards-container');
+
+  var countCards = cards.length;
+
+  if (countCards > 4) {
+    targetElement.classList.add("justify-content-between");
+  } else {
+    cards.forEach(card => card.classList.add("mr-4"));
+  }
+}
+
+featuredCardSpacing();
 cardSpacing();
