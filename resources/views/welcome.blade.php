@@ -24,6 +24,21 @@
 				<a href="/">Ver todos os eventos</a>
 			@endif
 		@else
+			<h2 class="text-center">&#11088 Eventos em Destaque &#11088</h2>
+			<div id="featured-cards-container" class="d-flex row">
+				@foreach($eventsInEvidence as $highlighted)
+				<div id="featured-event-card" class="card col-md-3">
+					<img src="/img/events/{{ $highlighted['event']->image }}" alt="{{ $highlighted['event']->title }}">
+					<div class="card-body">
+						<p class="card-date">{{date('d/m/Y', strtotime($highlighted['event']->date))}}</p>
+						<h5 class="card-title">{{$highlighted['event']->title}}</h5>
+						<p class="card-participants">{{ count($highlighted['event']->users)}} participantes</p>
+						<a href="/events/{{ $highlighted['event']->id }}" class="btn btn-primary">Saber mais</a>
+					</div>
+				</div>
+				@endforeach
+			</div>
+			
 			<h2>Próximos Eventos</h2>		
 			<p class="subtitle">Veja os eventos dos próximos dias</p>
 		@endif
