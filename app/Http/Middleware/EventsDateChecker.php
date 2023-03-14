@@ -25,7 +25,7 @@ class EventsDateChecker
 
         $explodedWord = explode('/', $url);
 
-        $eventId = (int) $explodedWord[2];
+        $eventId = (int) $explodedWord[4];
 
         $event = Event::findOrFail($eventId);
 
