@@ -4,6 +4,7 @@
 
 @section('content')
 
+@if($event->expired != 0)
   <div class="col-md-10 offset-md-1">
     <div class="row">
       <div class="col-md-6" id="image-container">
@@ -43,5 +44,10 @@
       </div>
     </div>
   </div>
+@else
+  <div class="col-md-12">
+    <h3>Desculpe o evento que você está buscando expirou!</h3>
+  </div>
+@endif
 
 @endsection

@@ -30,7 +30,8 @@ class EventController extends Controller
         if($search) {
 
             $events = Event::where([
-                ['title', 'like', '%'.$search.'%']
+                ['title', 'like', '%'.$search.'%'],
+                ['expired', '!=', 0]
             ])->get();
 
             if(count($events) == 0) {
@@ -43,7 +44,8 @@ class EventController extends Controller
                     if (in_array($searchString, $socialEvents, true)){
 
                         $events = Event::where([
-                            ['category', 'like', 'Evento Social']
+                            ['category', 'like', 'Evento Social'],
+                            ['expired', '!=', 0]
                         ])->get();
 
                         $similar = true;
@@ -52,7 +54,8 @@ class EventController extends Controller
                     } elseif (in_array($searchString, $techEvents, true)) {
 
                         $events = Event::where([
-                            ['category', 'like', 'Evento de Tecnologia']
+                            ['category', 'like', 'Evento de Tecnologia'],
+                            ['expired', '!=', 0]
                         ])->get();
 
                         $similar = true;
@@ -61,7 +64,8 @@ class EventController extends Controller
                     } elseif (in_array($searchString, $corporateEvents, true)) {
 
                         $events = Event::where([
-                            ['category', 'like', 'Evento Corporativo']
+                            ['category', 'like', 'Evento Corporativo'],
+                            ['expired', '!=', 0]
                         ])->get();
 
                         $similar = true;
@@ -70,7 +74,8 @@ class EventController extends Controller
                     } elseif (in_array($searchString, $religiousEvent, true)) {
                         
                         $events = Event::where([
-                            ['category', 'like', 'Evento Religioso']
+                            ['category', 'like', 'Evento Religioso'],
+                            ['expired', '!=', 0]
                         ])->get();
 
                         $similar = true;
@@ -79,7 +84,8 @@ class EventController extends Controller
                     } elseif (in_array($searchString, $educationalEvent, true)) {
                         
                         $events = Event::where([
-                            ['category', 'like', 'Evento Educacional']
+                            ['category', 'like', 'Evento Educacional'],
+                            ['expired', '!=', 0]
                         ])->get();
 
                         $similar = true;
@@ -88,7 +94,8 @@ class EventController extends Controller
                     } elseif (in_array($searchString, $entertainmentEvent, true)) {
                         
                         $events = Event::where([
-                            ['category', 'like', 'Evento de Entretenimento e Lazer']
+                            ['category', 'like', 'Evento de Entretenimento e Lazer'],
+                            ['expired', '!=', 0]
                         ])->get();
 
                         $similar = true;
@@ -97,7 +104,8 @@ class EventController extends Controller
                     } elseif (in_array($searchString, $sportsEvent, true)) {
                         
                         $events = Event::where([
-                            ['category', 'like', 'Evento Esportivo']
+                            ['category', 'like', 'Evento Esportivo'],
+                            ['expired', '!=', 0]
                         ])->get();
 
                         $similar = true;
@@ -106,8 +114,11 @@ class EventController extends Controller
                     }
                 }
             }
+
+            return view('welcome', ['events' => $events, 'search' => $search, 'similar' => $similar]);
+
         } else {
-            $events = Event::all();
+            $events = Event::where([['expired', '!=', 0]])->get();
 
             $accessData = DB::select('select url,count from access_counts');
 
@@ -129,14 +140,17 @@ class EventController extends Controller
 
                 $eventInEvidence = Event::findOrFail($listEventsWithAccess[$i]['id']);
 
-                $participants = count($eventInEvidence->users);
+                if ($eventInEvidence->expired != 0){
 
-                $currentAccessCount = $listEventsWithAccess[$i]['count'];
+                    $participants = count($eventInEvidence->users);
 
-                $average = (2*$currentAccessCount)+(5*$participants)/7;
+                    $currentAccessCount = $listEventsWithAccess[$i]['count'];
 
-                $listEventsInEvidence[] = ['event' => $eventInEvidence, 'average' => $average];
+                    $average = (2*$currentAccessCount)+(5*$participants)/7;
 
+                    $listEventsInEvidence[] = ['event' => $eventInEvidence, 'average' => $average];    
+
+                }
             }
 
             function cmp($a, $b)
@@ -151,9 +165,9 @@ class EventController extends Controller
 
             usort($listEventsInEvidence, 'App\Http\Controllers\cmp');
 
+            return view('welcome', ['events' => $events, 'search' => $search, 'similar' => $similar, 'eventsInEvidence' => $listEventsInEvidence]);
         }
 
-        return view('welcome', ['events' => $events, 'search' => $search, 'similar' => $similar, 'eventsInEvidence' => $listEventsInEvidence]);
     }
 
     public function create() 

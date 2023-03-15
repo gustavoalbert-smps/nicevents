@@ -19,7 +19,7 @@
 			<h2>Resultados da sua busca por: <span id="span-search">{{$search}}</span></h2>
 			@if($similar === true && count($events) != 0)
 				<p>Não foi possível encontrar nenhum evento correspondente a sua pesquisa. Veja alguns semelhantes:</p>
-			@else
+			@elseif($similar === true && count($events) === 0)
 				<p>Não foi possível encontrar nenhum evento!</p>
 				<a href="/">Ver todos os eventos</a>
 			@endif
