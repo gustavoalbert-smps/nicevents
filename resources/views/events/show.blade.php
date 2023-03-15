@@ -46,7 +46,10 @@
   </div>
 @else
   <div class="col-md-12">
-    <h3>Desculpe o evento que você está buscando expirou!</h3>
+    <div id="expired-event-container">
+      <img class="mx-auto my-5 d-block" src="/img/away_event.svg" alt="away_event">  
+    </div>
+    <h3 class="text-center mb-5">Desculpe, o evento que você está buscando expirou!</h3>
   </div>
 @endif
 

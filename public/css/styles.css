@@ -300,6 +300,12 @@ main {
     vertical-align: middle;
 }
 
+#expired-event-container img {
+    max-height: 26rem;
+    border-top-left-radius: 0.625rem;
+    border-top-right-radius: 0.625rem;
+}
+
 /* Dashboard */
 .dashboard-title-container {
     margin-top: 1.875rem;
