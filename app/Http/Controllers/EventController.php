@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 Use App\Models\Event;
 use App\Models\User;
-
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
@@ -277,6 +277,16 @@ class EventController extends Controller
         $event->category = $request->category;
         $event->private = $request->private;
         $event->items = $request->items;
+
+        $now = new DateTime();
+
+        $eventDate = new DateTime($event->date);
+
+        $dateDiff = $now->diff($eventDate);
+        
+        if ($dateDiff->invert == 1) {
+            $event->expired = 0;
+        }
 
         //image upload
         if($request->hasFile('image') && $request->file('image')->isValid()) {
